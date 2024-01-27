@@ -52,12 +52,12 @@
 // MQTT CLIENT CONFIG  
 static const char* pubtopic      = "620146473";                    // Add your ID number here
 static const char* subtopic[]    = {"620146473_sub","/elet2415"};  // Array of Topics(Strings) to subscribe to
-static const char* mqtt_server   = "address or ip";         // Broker IP address or Domain name as a String 
+static const char* mqtt_server   = "www.yanacreations.com";         // Broker IP address or Domain name as a String 
 static uint16_t mqtt_port        = 1883;
 
 // WIFI CREDENTIALS
-const char* ssid       = "YOUR_SSID"; // Add your Wi-Fi ssid
-const char* password   = "YOUR_PASS"; // Add your Wi-Fi password 
+const char* ssid       = "MonaConnect"; // Add your Wi-Fi ssid
+const char* password   = ""; // Add your Wi-Fi password 
 
 
 
@@ -116,8 +116,11 @@ void setup() {
   pinMode(BTN_A,INPUT_PULLUP);
   pinMode(BTN_B,INPUT_PULLUP);
 
+
   initialize();           // INIT WIFI, MQTT & NTP 
   vButtonCheckFunction(); // UNCOMMENT IF USING BUTTONS THEN ADD LOGIC FOR INTERFACING WITH BUTTONS IN THE vButtonCheck FUNCTION
+
+  Display(8);
 
 }
   
@@ -141,7 +144,7 @@ void vButtonCheck( void * pvParameters )  {
     for( ;; ) {
         // Add code here to check if a button(S) is pressed
         // then execute appropriate function if a button is pressed
-        if(digitalRead(BTN_A) == LOW || digitalRead(BTN_A) == LOW) {
+        if(digitalRead(BTN_A) == LOW || digitalRead(BTN_B) == LOW) {
           GDP();
 
         }  
@@ -160,7 +163,12 @@ void vUpdate( void * pvParameters )  {
           char message[1100]  = {0};
 
           // Add key:value pairs to JSon object
-          doc["id"]         = "620012345";
+          doc["id"]         = "620146473";
+          doc["timestamp"]  = getTimeStamp();
+          doc["number"]     = number;
+          doc["ledA"]       = getLEDStatus(LED_A);
+          doc["ledB"]       = getLEDStatus(LED_B);
+
 
           serializeJson(doc, message);  // Seralize / Covert JSon object to JSon string and store in char* array
 
@@ -215,9 +223,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
     if(strcmp(led, "LED A") == 0){
       /*Add code to toggle LED A with appropriate function*/
+      toggleLED(LED_A);
     }
     if(strcmp(led, "LED B") == 0){
       /*Add code to toggle LED B with appropriate function*/
+      toggleLED(LED_B);
     }
 
     // PUBLISH UPDATE BACK TO FRONTEND
@@ -387,7 +397,7 @@ void setLEDState(int8_t LED, int8_t state){
 
 void toggleLED(int8_t LED){
   // TOGGLES THE STATE OF SPECIFIC LED
-  digitalWrite(LED, !digitalRead(LED));   
+  setLEDState(LED, !digitalRead(LED));   
 }
 
 void GDP(void){
