@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Internet of Things (IoT) Template - Random Number Generator and Analysis
 
 ### Description
@@ -87,3 +88,6 @@ Create a production bundle (Compile and Minify for Production)
 ```sh
 npm run build
 ```
+=======
+# ELET2415-Lab1
+>>>>>>> d7fb051cd94d00bb2ecfca5947d825597115e16a
