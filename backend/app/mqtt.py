@@ -34,11 +34,12 @@ class MQTT:
 
 
         # REGISTER CALLBACK FUNCTION FOR EACH TOPIC
-        self.client.message_callback_add("620012345", self.gdp)
-        self.client.message_callback_add("620012345_pub", self.toggle)
+        self.client.message_callback_add("620146473", self.gdp)
+        self.client.message_callback_add("620146473_sub", self.toggle)
+        #self.client.message_callback_add("620146473_pub", self.toggle)
 
         # ADD MQTT SERVER AND PORT INFORMATION BELOW
-        self.client.connect_async("localhost", 1883, 60)
+        self.client.connect_async("yanacreations.com", 1883, 60)
        
 
 

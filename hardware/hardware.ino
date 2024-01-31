@@ -144,7 +144,7 @@ void vButtonCheck( void * pvParameters )  {
     for( ;; ) {
         // Add code here to check if a button(S) is pressed
         // then execute appropriate function if a button is pressed
-        if(digitalRead(BTN_A) == LOW || digitalRead(BTN_B) == LOW) {
+        if(digitalRead(BTN_A) == LOW) {
           GDP();
 
         }  
