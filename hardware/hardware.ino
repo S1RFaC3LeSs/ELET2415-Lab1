@@ -45,7 +45,7 @@
 /* Complete all others */
 #define LED_B 2 
 #define BTN_A 16
-#define BTN_B 17
+//#define BTN_B 17
 
 
 
@@ -114,7 +114,7 @@ void setup() {
   pinMode(LED_A,OUTPUT);
   pinMode(LED_B,OUTPUT);
   pinMode(BTN_A,INPUT_PULLUP);
-  pinMode(BTN_B,INPUT_PULLUP);
+//  pinMode(BTN_B,INPUT_PULLUP);
 
 
   initialize();           // INIT WIFI, MQTT & NTP 
@@ -387,17 +387,33 @@ void Display(unsigned char number){
 
 int8_t getLEDStatus(int8_t LED) {
   // RETURNS THE STATE OF A SPECIFIC LED. 0 = LOW, 1 = HIGH
-  return digitalRead(LED);
+  if (digitalRead(LED) == LOW){
+    return 0;
+  }
+  else if (digitalRead(LED) == HIGH){
+    return 1;
+  }
 }
 
 void setLEDState(int8_t LED, int8_t state){
   // SETS THE STATE OF A SPECIFIC LED  
-  digitalWrite(LED, state); 
+  if (state == 0{
+    digitalWrite(LED, LOW);
+  }
+  else if (state = 1){
+    digitalWrite(LED, HIGH);
+  }
+  }) 
 }
 
 void toggleLED(int8_t LED){
   // TOGGLES THE STATE OF SPECIFIC LED
-  setLEDState(LED, !digitalRead(LED));   
+  if (digitalRead(LED) == LOW){
+    digitalWrite(LED, HIGH);
+  }
+  else if (digitalRead(LED) == HIGH){
+    digitalWrite(LED, LOW);
+  }
 }
 
 void GDP(void){

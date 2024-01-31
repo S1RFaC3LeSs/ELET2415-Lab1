@@ -4,7 +4,7 @@
             <!-- R1 -->
             <v-col cols="12" align="center">
                 <!-- R1,C1 -->
-                <canvas id="myCHart"></canvas>
+                <canvas id="myChart"></canvas>
             </v-col>
             <v-col cols="12" align="center">
                 <!-- R1,C2 -->
@@ -150,7 +150,7 @@ const updateLEDCount = async(name)=>{
 
 <style scoped>
 /** CSS STYLE HERE */
-.container{
+/* .container{
     height: 100%;
 }
 
@@ -161,6 +161,6 @@ const updateLEDCount = async(name)=>{
 .mb-5{
     margin-bottom: 5;
 }
-
+ */
 
 </style>
