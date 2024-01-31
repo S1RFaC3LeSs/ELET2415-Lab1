@@ -236,7 +236,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
     // Add key:value pairs to Json object according to below schema
     // ‘{"id": "student_id", "timestamp": 1702212234, "number": 9, "ledA": 0, "ledB": 0}’
-    doc["id"]         = "ID"; // Change to your student ID number
+    doc["id"]         = "620146473"; // Change to your student ID number
     doc["timestamp"]  = getTimeStamp();
     /*Add code here to insert all other variabes that are missing from Json object
     according to schema above
@@ -397,13 +397,12 @@ int8_t getLEDStatus(int8_t LED) {
 
 void setLEDState(int8_t LED, int8_t state){
   // SETS THE STATE OF A SPECIFIC LED  
-  if (state == 0{
+  if (state == 0){
     digitalWrite(LED, LOW);
   }
   else if (state = 1){
     digitalWrite(LED, HIGH);
   }
-  }) 
 }
 
 void toggleLED(int8_t LED){
